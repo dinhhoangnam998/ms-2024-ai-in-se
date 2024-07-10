@@ -35,3 +35,9 @@ def load_session_history(session_id: str) -> BaseChatMessageHistory:
         return chat_history
 
 
+def load_all_session_ids() -> list[str]:
+    with Session(engine) as session:
+        statement = select(ChatMessage.session_id).distinct()
+        return session.exec(statement).all()
+
+
