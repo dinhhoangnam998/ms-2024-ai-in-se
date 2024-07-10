@@ -12,7 +12,7 @@ class ChatMessage(SQLModel, table=True):
     session_id: str = Field(nullable=False)
 
 
-engine = create_engine("sqlite:///database.db")
+engine = create_engine("sqlite:///sqlite.db")
 
 SQLModel.metadata.create_all(engine)
 

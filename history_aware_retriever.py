@@ -1,8 +1,14 @@
 from langchain.chains import create_history_aware_retriever
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
 
+from document_loader import split_docs
 from llm import llm
-from retriever import retriever
+
+vectorstore = Chroma.from_documents(documents=split_docs, embedding=OpenAIEmbeddings())
+retriever = vectorstore.as_retriever(search_kwargs={'k': 3})
+
 
 contextualize_q_system_prompt = (
     "Given a chat history and the latest user question "
