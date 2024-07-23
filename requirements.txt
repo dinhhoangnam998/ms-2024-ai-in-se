@@ -8,3 +8,4 @@ bs4~=0.0.2
 fastapi~=0.111.0
 sqlmodel~=0.0.19
 beautifulsoup4~=4.12.3
+pypdf
